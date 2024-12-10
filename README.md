@@ -4,4 +4,4 @@ Designed and implemented an interactive accelerator game based on the Google Chr
 Isaac Medina, Jan Konings, Ryan Chen, Jacob Gerson
 # Decription
 An in depth description of our project can be found here
-#Pictures
+# Pictures
