@@ -24,7 +24,7 @@ architecture synth of jumbo_fsm is
 			Xin : in unsigned(4 downto 0);
 			Yin : in unsigned(4 downto 0);
          		data : out std_logic_vector(5 downto 0)
-     	);
+     		);
 	end component;
 	
 	component JumboRUN_ROM1 is
@@ -157,8 +157,6 @@ begin
 		end if;
 	end process;
 	        
-	 
-	
 	process(current_state_JUMBO, jumbo_display_on, Jumbo_Row_in, Jumbo_Col_in, jump_lgc, duck_lgc, start_lgc, game_start_state, game_playing_state, running_counter) is begin 
 	    case current_state_JUMBO is 
 	        when JUMBO_STATIC =>
@@ -214,8 +212,7 @@ begin
 			next_state_JUMBO <= JUMBO_DUCKING;
 	             else
 	                next_state_JUMBO <= JUMBO_DUCKING; -- Stay in ducking state
-		      end if;
-				
+		      end if;			
 		when JUMBO_RUNNING =>
 			if jumbo_display_on = '1' then
 				if JUMBO_DRAW then 
