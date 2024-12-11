@@ -27,17 +27,14 @@ architecture synth of top is
 	--jumbo graphic signal 
 	signal JUMBO_GRAPHIC : std_logic_vector(5 downto 0);
 	
-
-	--signal RESET_top : std_logic := '1'; -- Start reset high
-	
 	component nes is 
 		port(
-    data : in std_logic;
-    latch : out std_logic;
-    controller_clk : out std_logic;
-	jump_but : out std_logic;
-	start_but : out std_logic;
-	duck_but : out std_logic
+			data : in std_logic;
+			latch : out std_logic;
+			controller_clk : out std_logic;
+			jump_but : out std_logic;
+			start_but : out std_logic;
+			duck_but : out std_logic
 		);
 	end component nes;
 	
