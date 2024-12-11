@@ -2,7 +2,6 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
-
 entity Digit2ROM is
 	port(
 	Xin : in unsigned(4 downto 0);
@@ -11,13 +10,11 @@ entity Digit2ROM is
 	);
 end Digit2ROM;
 
-
 architecture synth of Digit2ROM is
 
 	signal addy : unsigned(9 downto 0);
 
 begin
-
 	addy <= Yin & Xin;
 	process(addy) begin
 		case addy is
