@@ -18,8 +18,6 @@ entity CloudPatterngen is
 end CloudPatterngen;
 
 architecture synth of CloudPatterngen is
-	
-	
 	component CloudROM is
 		port(
 			Xin : in unsigned(4 downto 0);
@@ -75,7 +73,6 @@ begin
 			else 
 				random_cloud_counter <= random_cloud_counter + 1;
 			end if;
-			
 			if game_start_state = '1' then
 				cloud_offset1 <= to_unsigned(545, 10);
 				cloud_offset2 <= to_unsigned(275, 10);
@@ -84,7 +81,6 @@ begin
 				cloud1_ypos <= to_unsigned(196, 10);
 				cloud2_ypos <= to_unsigned(81, 10);
 				cloud3_ypos <= to_unsigned(141, 10);
-			
 			elsif game_playing_state = '1' then 
 				if cloud_offset1 = 0 then 
 					cloud_offset1 <= to_unsigned(640, 10);
@@ -92,14 +88,12 @@ begin
 				else 
 					cloud_offset1 <= cloud_offset1 - 1;
 				end if;
-				
 				if cloud_offset2 = 0 then 
 					cloud_offset2 <= to_unsigned(640, 10);
 					cloud2_ypos <= random_cloud_counter;
 				else 
 					cloud_offset2 <= cloud_offset2 - 1;
 				end if;
-				
 				if cloud_offset3 = 0 then 
 					cloud_offset3 <= to_unsigned(640, 10);
 					cloud3_ypos <= random_cloud_counter;
@@ -109,13 +103,9 @@ begin
 			end if;
 		end if;
 	end process;
-		
-
-			
-process(Cloud_display_on, game_start_state, game_playing_state, Cloud_Row_in, Cloud_Col_in)
-begin
-	if Cloud_display_on = '1' then
-		if game_start_state = '1' then
+	process(Cloud_display_on, game_start_state, game_playing_state, Cloud_Row_in, Cloud_Col_in) is begin
+		if Cloud_display_on = '1' then
+			if game_start_state = '1' then
 				if Cloud_range1 then
 					y_pos <= Cloud_Row_in - (cloud1_ypos);
 					x_pos <= Cloud_Col_in - (cloud_offset1 + 1);
@@ -135,7 +125,7 @@ begin
 					CloudScaleCol <= x_pos(5 downto 1);
 					Cloud_rgb <= CloudROM_out;
 				end if;
-		elsif game_playing_state = '1' then
+			elsif game_playing_state = '1' then
 				if Cloud_range1 then
 					y_pos <= Cloud_Row_in - (cloud1_ypos);
 					x_pos <= Cloud_Col_in - (cloud_offset1 + 1);
@@ -157,5 +147,5 @@ begin
 				end if;
 			end if;
 		end if;
-end process;
+	end process;
 end synth;
