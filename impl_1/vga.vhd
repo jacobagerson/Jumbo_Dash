@@ -14,13 +14,11 @@ entity vga is
 end vga;
 
 architecture synth of vga is
-
 	-- Horizontal and Vertical counter signals
 	signal column_count : integer range 0 to 799 := 0;
 	signal row_count : integer range 0 to 524 := 0;
 	
 begin
-
 	-- Process for column and row counters
 	process(pixel_clk) 
 	begin
@@ -52,6 +50,4 @@ begin
 	-- Assign the current row and column for display 
 	column <= std_logic_vector(to_unsigned(column_count, 10));
 	row <= std_logic_vector(to_unsigned(row_count, 10));
-	
-end;
-	 
+end synth;	 
