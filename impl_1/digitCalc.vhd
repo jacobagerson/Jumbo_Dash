@@ -40,21 +40,20 @@ use ieee.numeric_std.all;
 --end synth;
 
 entity digitCalc is
-    Port ( 
-			score_60hz_clock  : in  std_logic;                    
+    port ( 
+		score_60hz_clock  : in  std_logic;                    
            	game_over_state, game_start_state  : in  std_logic;                    
-           	velocity     : in  integer range 0 to 10;         
+           	velocity : in  integer range 0 to 10;         
            	digitsOut : out integer_vector(0 to 4)		
            );
 end digitCalc;
 
 architecture synth of digitCalc is
-    signal digit0, digit1, digit2, digit3, digit4 : integer range 0 to 10 := 0;
+	signal digit0, digit1, digit2, digit3, digit4 : integer range 0 to 10 := 0;
 	signal timer : integer range 0 to 6;	
 begin
-
-    process(score_60hz_clock, game_over_state, game_start_state)
-    begin
+	process(score_60hz_clock, game_over_state, game_start_state)
+    	begin
 		if rising_edge(score_60hz_clock) then 
 			if game_start_state = '1' then 
 				digit0 <= 0;
@@ -95,17 +94,8 @@ begin
 				if digit4 = 10 then
 					digit4 <= 0;
 				end if;
-			
-             
-        end if;
+	        	end if;
 		end if;
-    end process;
-
-    digitsOut <= (digit0, digit1, digit2, digit3, digit4);
-
+	end process;
+	digitsOut <= (digit0, digit1, digit2, digit3, digit4);
 end synth;
-
-
-
-
-
