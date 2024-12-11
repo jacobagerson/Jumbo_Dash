@@ -29,7 +29,8 @@ entity score is
 	);
 end score;
 	
-architecture synth of score is --	digit case function
+architecture synth of score is 
+--	digit case function
 	function get_digitVal(
 	digit : integer;
 	ZeroOut, OneOut, TwoOut, ThreeOut, FourOut, FiveOut, SixOut, SevenOut, EightOut, NineOut : std_logic_vector(5 downto 0)
@@ -50,7 +51,7 @@ architecture synth of score is --	digit case function
 			end case;
 	end function;
 	
-		component speedCalc is
+	component speedCalc is
 		port(
 			score : in unsigned(16 downto 0);
 			increment : out integer range 0 to 10
@@ -138,12 +139,12 @@ architecture synth of score is --	digit case function
 	end component;
 	
 	component digitCalc is
-    Port ( 
+    		Port ( 
 			score_60hz_clock  : in  std_logic;                    
-           	game_over_state, game_start_state  : in  std_logic;                    
-           	velocity     : in  integer range 0 to 10;         
-           	digitsOut : out integer_vector(0 to 4)
-           );
+	           	game_over_state, game_start_state  : in  std_logic;                    
+	           	velocity     : in  integer range 0 to 10;         
+	           	digitsOut : out integer_vector(0 to 4)
+           	);
 	end component;
 	
 	component IROM is
@@ -162,7 +163,8 @@ architecture synth of score is --	digit case function
 		);
 	end component;
 	
-	--		 Digit RBG display signals
+	
+--		 Digit RBG display signals
 	signal ZeroOut : std_logic_vector(5 downto 0); 
 	signal OneOut : std_logic_vector(5 downto 0); 
 	signal TwoOut : std_logic_vector(5 downto 0); 
@@ -194,101 +196,100 @@ architecture synth of score is --	digit case function
 
 	
 begin 
-			--speedCalc_inst : speedCalc
-			--port map(
-				--score => score,
-				--increment => game_velocity
-			--);
-	Digit0Draw : Digit0ROM
-			port map(
-				Xin => ROMXin,
-				Yin => ROMYin,
-				data => ZeroOut
-			);
-				Digit1Draw : Digit1ROM
-			port map(
-				Xin => ROMXin,
-				Yin => ROMYin,
-				data => OneOut
-			);
-			Digit2Draw : Digit2ROM
-			port map(
-				Xin => ROMXin,
-				Yin => ROMYin,
-				data => TwoOut
-			);
-					Digit3Draw : Digit3ROM
-			port map(
-				Xin => ROMXin,
-				Yin => ROMYin,
-				data => ThreeOut
-			);
-			
-		Digit4Draw : Digit4ROM
-			port map(
-				Xin => ROMXin,
-				Yin => ROMYin,
-				data => FourOut
-			);
-			
-		Digit5Draw : Digit5ROM
-			port map(
-				Xin => ROMXin,
-				Yin => ROMYin,
-				data => FiveOut
-			);
-			
-		Digit6Draw : Digit6ROM
-			port map(
-				Xin => ROMXin,
-				Yin => ROMYin,
-				data => SixOut
-			);
-			
-		Digit7Draw : Digit7ROM
-			port map(
-				Xin => ROMXin,
-				Yin => ROMYin,
-				data => SevenOut
-			);
-			
-		Digit8Draw : Digit8ROM
-			port map(
-				Xin => ROMXin,
-				Yin => ROMYin,
-				data => EightOut
-			);
-			
-		Digit9Draw : Digit9ROM
-			port map(
-				Xin => ROMXin,
-				Yin => ROMYin,
-				data => NineOut
-			);
+
+	Digit0Draw : Digit0ROM
+		port map(
+			Xin => ROMXin,
+			Yin => ROMYin,
+			data => ZeroOut
+		);
 		
+	Digit1Draw : Digit1ROM
+		port map(
+			Xin => ROMXin,
+			Yin => ROMYin,
+			data => OneOut
+		);
+			
+	Digit2Draw : Digit2ROM
+		port map(
+			Xin => ROMXin,
+			Yin => ROMYin,
+			data => TwoOut
+		);
+			
+	Digit3Draw : Digit3ROM
+		port map(
+			Xin => ROMXin,
+			Yin => ROMYin,
+			data => ThreeOut
+		);
 		
-		score_inst : digitCalc
-			port map( 
-				score_60hz_clock => clk_60hz,              
-				game_over_state => game_over_state,
-				game_start_state => game_start_state,                    
-				velocity => game_velocity,        
-				digitsOut => ScoreDigits
-           );
-			
-		IROM_inst : IROM
-			port map(
-				Xin => ROMXin,
-				Yin => ROMYin,
-				data => IROM_out
-			);
-			
-		HROM_inst : HROM
-			port map(
-				Xin => ROMXin,
-				Yin => ROMYin,
-				data => HROM_out
-			);
+	Digit4Draw : Digit4ROM
+		port map(
+			Xin => ROMXin,
+			Yin => ROMYin,
+			data => FourOut
+		);
+		
+	Digit5Draw : Digit5ROM
+		port map(
+			Xin => ROMXin,
+			Yin => ROMYin,
+			data => FiveOut
+		);
+		
+	Digit6Draw : Digit6ROM
+		port map(
+			Xin => ROMXin,
+			Yin => ROMYin,
+			data => SixOut
+		);
+		
+	Digit7Draw : Digit7ROM
+		port map(
+			Xin => ROMXin,
+			Yin => ROMYin,
+			data => SevenOut
+		);
+		
+	Digit8Draw : Digit8ROM
+		port map(
+			Xin => ROMXin,
+			Yin => ROMYin,
+			data => EightOut
+		);
+		
+	Digit9Draw : Digit9ROM
+		port map(
+			Xin => ROMXin,
+			Yin => ROMYin,
+			data => NineOut
+		);
+	
+	
+	score_inst : digitCalc
+		port map( 
+			score_60hz_clock => clk_60hz,              
+			game_over_state => game_over_state,
+			game_start_state => game_start_state,                    
+			velocity => game_velocity,        
+			digitsOut => ScoreDigits
+   		);
+		
+	IROM_inst : IROM
+		port map(
+			Xin => ROMXin,
+			Yin => ROMYin,
+			data => IROM_out
+		);
+		
+	HROM_inst : HROM
+		port map(
+			Xin => ROMXin,
+			Yin => ROMYin,
+			data => HROM_out
+		);
 			
 			
 	
