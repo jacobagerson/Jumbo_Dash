@@ -3,5 +3,7 @@ Designed and implemented an interactive accelerator game based on the Google Chr
 # Made by 
 Isaac Medina, Jan Konings, Ryan Chen, Jacob Gerson
 # Decription
-An in depth description of our project can be found here
+An in depth description of our project can be found here 
+
+VHDL code is in the "impl_1" folder.
 # Pictures
