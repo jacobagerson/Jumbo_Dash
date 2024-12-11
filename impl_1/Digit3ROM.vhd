@@ -35,12 +35,3 @@ begin
 		end case;
 	end process;
 end synth;
-
-
-
-
-
-
-
-
-
