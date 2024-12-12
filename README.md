@@ -9,3 +9,6 @@ An in depth description of our project can be found here
 
 VHDL code is in the "impl_1" folder.
 # Pictures
+![image](https://github.com/user-attachments/assets/abbcdbac-d09f-4dc3-9fc3-0fe3b18794b1)
+![IMG_4532](https://github.com/user-attachments/assets/c95f53f4-f041-48c6-a155-b6981da2faf9)
+![IMG_4533](https://github.com/user-attachments/assets/40313705-035a-4454-a2de-20aa9ebba95d)
